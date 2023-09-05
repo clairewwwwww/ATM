@@ -6,7 +6,8 @@ public class ATMTester
         checkOpenAccount(tester);
         //checkCloseAccount(tester);
         //checkCheckBalance(tester);
-        checkDepositMoney(tester);
+        //checkDepositMoney(tester);
+        checkWithdrawMoney(tester);
         
     }  
     public static void checkOpenAccount(ATM tester) throws Exception
@@ -37,7 +38,9 @@ public class ATMTester
     }
     public static void checkWithdrawMoney(ATM tester) throws Exception
     {
-
+        System.out.print(tester.withdrawMoney("test1", 10)); 
+        System.out.print(tester.withdrawMoney("test1", 10));
+        //System.out.print(tester.withdrawMoney("test1", 10));
     }
     public static void checkTransferMoney(ATM tester) throws Exception
     {

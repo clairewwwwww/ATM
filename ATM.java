@@ -80,6 +80,11 @@ public class ATM
         if not, throws exception mentioning they're broke AF */
     public double depositMoney(String userID, double amount)throws Exception
     {
+        if(!ATM.containsKey(userID))
+        {
+            throw new Exception("account is not found");
+        }
+
         if(ATM.containsKey(userID))
         {
             double newAmount = ATM.get(userID) + amount;
@@ -91,7 +96,35 @@ public class ATM
             throw new Exception("You're broke :(");
         }
     }
-
+    /*A method 'withdrawMoney'
+    Input:
+        String: userId - of an email of the new user ID
+        double: amount - withdrawal amount
+    Output:
+        double:  of the returned amount or throws exception
+    Behavior:
+        checks for withdrawal amount within the account
+        if amount exists, reduce the withdrawn amount and return that value
+        if not, throws exception mentioning they're broke AF */
+    public double withdrawMoney(String userID, double amount)throws Exception
+    {
+        if(!ATM.containsKey(userID))
+        {
+            throw new Exception("account is not found");
+        }
+        
+        double current = ATM.get(userID);
+        if(current >= amount)
+        {
+            double newAmount = current - amount;
+            ATM.replace(userID, newAmount);
+            return newAmount;
+        }
+        else
+        {
+            throw new Exception("You don't have enough money :(");
+        }
+    }
     public void audit() throws Exception
     {
         //File file = new File("AccountAudit.txt");
