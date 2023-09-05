@@ -1,4 +1,6 @@
+import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Set;
 
 public class ATM 
 {
@@ -46,5 +48,17 @@ public class ATM
             throw new Exception("Need to withdraw $$$ before closing");
         }
     }
+    public void audit() throws Exception
+    {
+        //File file = new File("AccountAudit.txt");
+        PrintWriter pw = new PrintWriter("AccountAudit.txt"); 
+        Set<String> setOfKeys = ATM.keySet();
+			for(String key: setOfKeys)
+			{
+				pw.println("Email:" + key + " Value:" + ATM.get(key));
+			}
+		pw.close();
+		
+	}
 
 }
