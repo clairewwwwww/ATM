@@ -39,6 +39,10 @@ public class ATM
         If there is a balance, throws an error mentioning the need to withdraw $$$ before closing */
     public void closeAccount(String userID) throws Exception
     {
+        if(!ATM.containsKey(userID))
+        {
+            throw new Exception("no account is found");
+        }
         if(ATM.get(userID) <= 0|| ATM.get(userID) == null)
         {
             ATM.remove(userID);
@@ -65,6 +69,29 @@ public class ATM
             throw new Exception("no account is found");
         }
     }
+    /*A method called 'depositMoney'
+    Input:
+        String: userId - of an email of the new user ID
+        double: amount - deposit amount
+    Output:
+        double of the deposited amount or throws exception
+    Behavior:
+        if account exists, increase the amount of the users account value
+        if not, throws exception mentioning they're broke AF */
+    public double depositMoney(String userID, double amount)throws Exception
+    {
+        if(ATM.containsKey(userID))
+        {
+            double newAmount = ATM.get(userID) + amount;
+            ATM.replace(userID, newAmount);
+            return newAmount;
+        }
+        else
+        {
+            throw new Exception("You're broke :(");
+        }
+    }
+
     public void audit() throws Exception
     {
         //File file = new File("AccountAudit.txt");

@@ -4,7 +4,9 @@ public class ATMTester
     {
         ATM tester = new ATM();
         checkOpenAccount(tester);
-        checkCheckBalance(tester);
+        //checkCloseAccount(tester);
+        //checkCheckBalance(tester);
+        checkDepositMoney(tester);
         
     }  
     public static void checkOpenAccount(ATM tester) throws Exception
@@ -18,9 +20,27 @@ public class ATMTester
         tester.openAccount("test3", 36.00);
         //tester.audit();
     }
+    public static void checkCloseAccount(ATM tester) throws Exception
+    {
+        tester.closeAccount("test1");
+        //tester.openAccount("test2", 16.00);
+    }
     public static void checkCheckBalance(ATM tester) throws Exception
     {
         //System.out.print(tester.checkBalance("test1")); //if account exist
         System.out.print(tester.checkBalance("test23423"));//if account doesn't exist
+    }
+    public static void checkDepositMoney(ATM tester) throws Exception
+    {
+        //System.out.print(tester.depositMoney("test23423", 100));//if account doesn't exist
+        System.out.print(tester.depositMoney("test1", 10)); //if account exist
+    }
+    public static void checkWithdrawMoney(ATM tester) throws Exception
+    {
+
+    }
+    public static void checkTransferMoney(ATM tester) throws Exception
+    {
+
     }
 }
