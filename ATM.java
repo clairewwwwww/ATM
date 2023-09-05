@@ -112,7 +112,7 @@ public class ATM
         {
             throw new Exception("account is not found");
         }
-        
+
         double current = ATM.get(userID);
         if(current >= amount)
         {
@@ -125,6 +125,36 @@ public class ATM
             throw new Exception("You don't have enough money :(");
         }
     }
+    /*A method 'transferMoney'
+    Input:
+        String: fromAccount - user email / ID where the transfer is coming from
+        String: toAccount - of the email to transfer is going to
+        double: amount -  transfer amount
+    Output:  
+        boolean: success - whether the transfer was successful or not
+    Behavior:
+        withdraws money from the 'from' account
+        deposits money to the 'to' account */
+    public boolean transferMoney(String fromAccount, String toAccount, double amount)throws Exception
+    {
+        if(!ATM.containsKey(fromAccount) || !ATM.containsKey(toAccount))
+        {
+            throw new Exception("account is not found");
+        }
+        else
+        {
+            double transferAmount = amount;
+            withdrawMoney(fromAccount, transferAmount);
+            depositMoney(toAccount, transferAmount);
+            return true;
+        }
+    }
+    /*A method 'audit'
+    Behavior:
+        if the file already exists, deletes the current file and writes a new one
+        writes to a file named 'AccountAudit.txt'
+            writes out each account email and account value on subsequent new lines
+        closes the file after writing */
     public void audit() throws Exception
     {
         //File file = new File("AccountAudit.txt");
