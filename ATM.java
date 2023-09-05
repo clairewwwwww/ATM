@@ -48,6 +48,23 @@ public class ATM
             throw new Exception("Need to withdraw $$$ before closing");
         }
     }
+    /*A method 'checkBalance'
+    Input:
+        String: userId - of the account email / ID
+    Output:
+        the exact account value
+        throws exception if no account is found */
+    public double checkBalance(String userID) throws Exception
+    {
+        if(ATM.containsKey(userID))
+        {
+            return ATM.get(userID);
+        }
+        else
+        {
+            throw new Exception("no account is found");
+        }
+    }
     public void audit() throws Exception
     {
         //File file = new File("AccountAudit.txt");
