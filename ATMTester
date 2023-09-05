@@ -1,8 +1,0 @@
-public class CodeATMTester 
-{
-    public static void main(String[] args) throws Exception
-    {
-        CodeATM tester = new CodeATM();
-        tester.openAccount("test1", 12.00);
-    }  
-}
